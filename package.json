@@ -1,0 +1,90 @@
+{
+  "name": "codemylink",
+  "version": "1.1.0",
+  "description": "CodeMyLink 是一个简单易用的链接转 QR 工具，让任何 URL 秒变二维码",
+  "main": "electron/main.js",
+  "scripts": {
+    "serve": "python3 -m http.server 8000",
+    "electron": "electron ./electron/main.js",
+    "desktop": "npm-run-all -p serve electron",
+    "build:mac": "electron-builder --mac dmg",
+    "build:win": "electron-builder --win nsis --x64",
+    "build:all": "electron-builder --mac dmg --win nsis --x64",
+    "start": "npx http-server -p 8000 -o",
+    "dev": "npx live-server --port=8000 --open=/index.html",
+    "build": "echo 'No build process needed for static files'",
+    "test": "echo 'No tests specified'"
+  },
+  "keywords": [
+    "qr-code",
+    "url",
+    "converter",
+    "web-tool",
+    "javascript",
+    "html",
+    "css"
+  ],
+  "author": "TheNextHop",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/thenexthop2025/CodeMyLink.git"
+  },
+  "bugs": {
+    "url": "https://github.com/thenexthop2025/CodeMyLink/issues"
+  },
+  "homepage": "https://github.com/thenexthop2025/CodeMyLink#readme",
+  "devDependencies": {
+    "electron": "^30.0.0",
+    "electron-builder": "^24.13.3",
+    "http-server": "^14.1.1",
+    "live-server": "^1.2.2",
+    "npm-run-all": "^4.1.5"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  },
+  "build": {
+    "appId": "com.thenexthop.codemylink",
+    "productName": "CodeMyLink",
+    "artifactName": "${productName}-${version}-${arch}.${ext}",
+    "asar": true,
+    "directories": {
+      "buildResources": "electron"
+    },
+    "files": [
+      "index.html",
+      "style.css",
+      "script.js",
+      "qrcode.min.js",
+      "qrcode-standalone.js",
+      "manifest.json",
+      "sw.js",
+      "electron/**/*"
+    ],
+    "mac": {
+      "target": [
+        "dmg"
+      ],
+      "category": "public.app-category.utilities",
+      "icon": "electron/icon.icns"
+    },
+    "win": {
+      "icon": "electron/icon.ico",
+      "target": [
+        {
+          "target": "nsis",
+          "arch": [
+            "x64"
+          ]
+        }
+      ]
+    },
+    "nsis": {
+      "oneClick": true,
+      "perMachine": false,
+      "allowElevation": true,
+      "allowToChangeInstallationDirectory": false
+    }
+  }
+}

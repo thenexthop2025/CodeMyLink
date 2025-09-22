@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CodeMyLink</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="qrcode.min.js"></script>
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='%23667eea'/%3E%3Cpath d='M12 12h16v16H12zM36 12h16v16H36zM12 36h16v16H12zM36 36h10v6H36v10h-6V36h6z' fill='white'/%3E%3C/svg%3E">
+    <link rel="manifest" href="manifest.json">
+    <meta name="theme-color" content="#667eea">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>CodeMyLink</h1>
+            <p>快速将任何链接转换为高质量 QR 码</p>
+        </header>
+        
+        <main>
+            <div class="input-section">
+                <div class="input-group">
+                    <label for="url-input">输入URL：</label>
+                    <input type="url" id="url-input" placeholder="https://example.com" required>
+                    <button id="generate-btn" class="btn-primary">生成QR码</button>
+                </div>
+
+                <details class="controls" id="advanced">
+                    <summary>高级设置</summary>
+                    <div class="controls-grid">
+                        <label>尺寸(px)
+                            <input type="number" id="size-input" value="256" min="128" max="1024">
+                        </label>
+                        <label>边距(px)
+                            <input type="number" id="margin-input" value="16" min="0" max="128">
+                        </label>
+                        <label>纠错
+                            <select id="ec-input">
+                                <option value="L">L</option>
+                                <option value="M" selected>M</option>
+                                <option value="Q">Q</option>
+                                <option value="H">H</option>
+                            </select>
+                        </label>
+                        <label>二维码前景色
+                            <input type="color" id="fg-input" value="#000000">
+                        </label>
+                        <label>二维码背景色
+                            <input type="color" id="bg-input" value="#ffffff">
+                        </label>
+                        <label>中心Logo
+                            <input type="file" id="logo-input" accept="image/*">
+                        </label>
+                        <label>Logo比例%
+                            <input type="number" id="logo-scale" value="22" min="8" max="40">
+                        </label>
+                        <div class="controls-exports">
+                            <button id="download-png" type="button">导出PNG</button>
+                            <button id="download-svg" type="button">导出SVG</button>
+                            <button id="clear-history" type="button">清除历史</button>
+                        </div>
+                        <div class="controls-apply">
+                            <button id="apply-settings" type="button" class="btn-primary">应用设置</button>
+                            <span id="apply-status" role="status" aria-live="polite" class="apply-hint"></span>
+                        </div>
+                    </div>
+                </details>
+            </div>
+            
+            <div class="output-section" id="output-section" style="display: none;">
+                <div class="qr-container">
+                    <canvas id="qr-canvas"></canvas>
+                </div>
+                <div class="actions">
+                    <button id="download-btn">下载QR码</button>
+                    <button id="copy-btn">复制链接</button>
+                </div>
+            </div>
+
+            <details id="history-wrap" class="history-wrap">
+                <summary id="history-summary">历史记录</summary>
+                <section class="history" id="history" aria-label="历史记录"></section>
+            </details>
+            
+            <div class="error-message" id="error-message" style="display: none;">
+                <p>请输入有效的URL</p>
+            </div>
+        </main>
+        
+        <footer>
+            <p>CodeMyLink · 简单易用的链接转 QR 工具</p>
+        </footer>
+    </div>
+    
+    <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,15 @@
+{
+  "name": "CodeMyLink",
+  "short_name": "CodeMyLink",
+  "start_url": ".",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#667eea",
+  "icons": [
+    {
+      "src": "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='%23667eea'/%3E%3Cpath d='M12 12h16v16H12zM36 12h16v16H36zM12 36h16v16H12zM36 36h10v6H36v10h-6V36h6z' fill='white'/%3E%3C/svg%3E",
+      "sizes": "64x64",
+      "type": "image/svg+xml"
+    }
+  ]
+}

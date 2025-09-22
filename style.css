@@ -1,0 +1,303 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+}
+
+.container {
+    background: white;
+    border-radius: 20px;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+    padding: 40px;
+    max-width: 600px;
+    width: 100%;
+    text-align: center;
+}
+
+header h1 {
+    color: #333;
+    font-size: 2.5rem;
+    margin-bottom: 10px;
+    font-weight: 700;
+}
+
+header p {
+    color: #666;
+    font-size: 1.1rem;
+    margin-bottom: 40px;
+}
+
+.input-section {
+    margin-bottom: 30px;
+}
+
+.input-group {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+label {
+    font-weight: 600;
+    color: #333;
+    font-size: 1.1rem;
+    text-align: left;
+}
+
+#url-input {
+    padding: 15px 20px;
+    border: 2px solid #e1e5e9;
+    border-radius: 12px;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+    background: #f8f9fa;
+}
+
+#url-input:focus {
+    outline: none;
+    border-color: #667eea;
+    background: white;
+    box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+}
+
+#generate-btn {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    border: none;
+    padding: 15px 30px;
+    border-radius: 12px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+#generate-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 20px rgba(102, 126, 234, 0.3);
+}
+
+#generate-btn:active {
+    transform: translateY(0);
+}
+
+.output-section {
+    margin-top: 30px;
+    padding: 30px;
+    background: #f8f9fa;
+    border-radius: 16px;
+    border: 2px dashed #e1e5e9;
+}
+
+.qr-container {
+    margin-bottom: 25px;
+    display: flex;
+    justify-content: center;
+}
+
+#qr-canvas {
+    border-radius: 12px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+    background: white;
+    padding: 20px;
+}
+
+.actions {
+    display: flex;
+    gap: 15px;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.actions button {
+    background: white;
+    color: #667eea;
+    border: 2px solid #667eea;
+    padding: 12px 24px;
+    border-radius: 8px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    min-width: 120px;
+}
+
+.actions button:hover {
+    background: #667eea;
+    color: white;
+    transform: translateY(-1px);
+}
+
+.actions button:active {
+    transform: translateY(0);
+}
+
+.error-message {
+    background: #fee;
+    color: #c33;
+    padding: 15px;
+    border-radius: 8px;
+    border: 1px solid #fcc;
+    margin-top: 20px;
+}
+
+footer {
+    margin-top: 40px;
+    color: #999;
+    font-size: 0.9rem;
+}
+
+/* 响应式设计 */
+@media (max-width: 768px) {
+    .container {
+        padding: 30px 20px;
+        margin: 10px;
+    }
+    
+    header h1 {
+        font-size: 2rem;
+    }
+    
+    .actions {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .actions button {
+        width: 100%;
+        max-width: 200px;
+    }
+}
+
+/* 加载动画 */
+.loading {
+    position: relative;
+    overflow: hidden;
+}
+
+.loading::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+    animation: loading 1.5s infinite;
+}
+
+@keyframes loading {
+    0% { left: -100%; }
+    100% { left: 100%; }
+}
+
+/* Controls panel (refined) */
+.controls { margin-top: 12px; border: 1px solid #e6e8eb; border-radius: 12px; background: #fafbfc; }
+.controls summary { cursor: pointer; padding: 12px 16px; font-weight: 600; color: #333; }
+.controls[open] summary { border-bottom: 1px solid #e6e8eb; }
+.controls-grid { padding: 12px 16px; display: grid; grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); gap: 12px; }
+.controls-grid label { display: grid; gap: 6px; font-size: 0.9rem; color: #444; }
+.controls-grid input[type="number"], .controls-grid select, .controls-grid input[type="color"], .controls-grid input[type="file"] { padding: 8px 10px; border: 1px solid #d9dee3; border-radius: 8px; background: #fff; }
+.controls-actions { display: grid; grid-template-columns: 1fr auto auto auto; gap: 10px; }
+.controls-actions button { background: #fff; border: 1px solid #d0d7de; padding: 10px 14px; border-radius: 8px; cursor: pointer; }
+.controls-actions button:hover { background: #eef2ff; border-color: #667eea; }
+
+/* History */
+.history {
+    margin-top: 24px;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+    gap: 12px;
+}
+.history .item {
+    border: 1px solid #e6e8eb;
+    border-radius: 10px;
+    padding: 10px;
+    background: #fff;
+}
+.history .item .thumb {
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    border-radius: 8px;
+    background: #f7f7f7;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+}
+.history .item .meta {
+    margin-top: 8px;
+    font-size: 12px;
+    color: #555;
+    word-break: break-all;
+}
+@media (max-width: 768px) {
+    .controls .row { flex-direction: column; align-items: flex-start; }
+}
+
+/* Enhanced apply button feedback */
+#apply-settings { position: relative; transition: transform .06s ease, box-shadow .2s ease; }
+#apply-settings:active { transform: translateY(1px); box-shadow: 0 2px 8px rgba(0,0,0,.12) inset; }
+#apply-settings.loading { opacity: 1; }
+#apply-settings.loading::after { content: ""; position: absolute; right: 12px; top: 50%; width: 16px; height: 16px; margin-top: -8px; border: 2px solid rgba(255,255,255,.6); border-top-color: #fff; border-radius: 50%; animation: spin .8s linear infinite; }
+#apply-settings.success { background: inherit; }
+@keyframes spin { to { transform: rotate(360deg); } }
+
+/* Flash highlight of output */
+.output-section.flash { animation: flashBorder .9s ease; }
+@keyframes flashBorder { 0% { box-shadow: 0 0 0 0 rgba(102,126,234,.8); } 70% { box-shadow: 0 0 0 10px rgba(102,126,234,0); } 100% { box-shadow: none; } }
+.sr-only { position: absolute; left: -9999px; width: 1px; height: 1px; overflow: hidden; }
+
+/* apply status hint */
+.apply-hint { color: #666; font-size: 12px; }
+.apply-hint.ok { color: #16a34a; }
+.apply-hint.warn { color: #d97706; }
+
+/* input error feedback */
+#url-input.input-error { border-color: #ef4444; box-shadow: 0 0 0 3px rgba(239,68,68,.15); animation: shake .3s ease; }
+@keyframes shake { 0%,100% { transform: translateX(0); } 20% { transform: translateX(-2px); } 40% { transform: translateX(2px); } 60% { transform: translateX(-2px); } 80% { transform: translateX(2px); } }
+
+/* history collapsible */
+.history-wrap { margin-top: 16px; border: 1px solid #e6e8eb; border-radius: 10px; background: #fafbfc; }
+.history-wrap > summary { padding: 10px 12px; cursor: pointer; font-weight: 600; color: #333; }
+.history-wrap[open] > summary { border-bottom: 1px solid #e6e8eb; }
+.history { padding: 12px; }
+
+/* shared primary button */
+.btn-primary { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: #fff; border: none; padding: 12px 22px; border-radius: 12px; font-size: 1rem; font-weight: 600; cursor: pointer; transition: transform .12s ease, box-shadow .2s ease; }
+.btn-primary:hover { transform: translateY(-1px); box-shadow: 0 8px 16px rgba(102, 126, 234, 0.28); }
+.btn-primary:active { transform: translateY(0); }
+
+/* apply button keeps the same look at all states */
+.controls-apply { grid-column: 1 / -1; display: flex; gap: 10px; align-items: center; justify-content: center; }
+.controls-apply #apply-settings { flex: 0 0 auto; max-width: 260px; width: 100%; }
+#apply-settings.loading, #apply-settings.success { visibility: visible; }
+/* remove special success/outline styles and spinner visuals */
+#apply-settings.success { box-shadow: none; }
+#apply-settings.loading::after { content: none; }
+
+#history-summary.summary-flash { animation: flashBorder .9s ease; border-radius: 8px; }
+
+/* Force apply button keep primary style in all states */
+#apply-settings,
+#apply-settings.loading,
+#apply-settings.success {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%) !important;
+    color: #fff !important;
+    border: none !important;
+}
+
+/* hide inline apply status text; use toast instead */
+.apply-hint { display: none; }
