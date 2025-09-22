@@ -1,5 +1,7 @@
 # CodeMyLink
 
+简体中文 | [English](README.en.md)
+
 一个简单易用的链接转 QR 工具，让任何 URL 秒变高质量二维码。
 
 [项目仓库](https://github.com/thenexthop2025/CodeMyLink) · [最新版发布](https://github.com/thenexthop2025/CodeMyLink/releases)
